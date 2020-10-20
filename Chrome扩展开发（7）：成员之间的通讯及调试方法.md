@@ -189,6 +189,6 @@ chrome.runtime.onConnect.addListener((externalPort) => {
 
 |  <div style="width: 150pt">类型</div> | 调试方式 | 附加图片说明|
 | :----------------- | :--------| :-- |
-| background-js |点击“管理扩展程序”进入Chrome扩展页，点击“背景页”进入调试 | ![](https://img69.imagetwist.com/i/37402/3l87olqqlbgz.png/_______________.png)![](https://img69.imagetwist.com/i/37401/j9z6vg1xyefs.png/background______.png)|
-| content-script |F12如图找到对应的Chrome拓展进行调试，其实*content-script*的调试也可以不选特定的Chrome扩展也可以进行调试，F12也可以输出*content-script*的各种信息| ![](https://img202.imagetwist.com/i/37402/sz81o7f0muhd.png/content-script______.png) |
-| popup.js | 右击Chrome图标后，点击“审查弹出内容”即可调试*popup*页面 | ![](https://img250.imagetwist.com/i/37401/dqcpmleuab39.png/popup_________.png) |
+| background-js |点击“管理扩展程序”进入Chrome扩展页，点击“背景页”进入调试 | ![](./image/7-1-background调试_.png)![](./image/7-2-background调试_.png)|
+| content-script |F12如图找到对应的Chrome拓展进行调试，其实*content-script*的调试也可以不选特定的Chrome扩展也可以进行调试，F12也可以输出*content-script*的各种信息| ![](./image/7-3-conten调试.png) |
+| popup.js | 右击Chrome图标后，点击“审查弹出内容”即可调试*popup*页面 | ![](./image/7-4-popup调试.png) |

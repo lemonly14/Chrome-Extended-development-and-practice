@@ -74,7 +74,7 @@ new Vue({
 });
 ```
 
-![](https://img119.imagetwist.com/i/37364/qs70zpb25s50.png/_________.png)
+![](./image/5-1-核赔云助理popup演示图.png)
 
 * 使用大部分Chrome提供的api
 
@@ -107,7 +107,7 @@ this.idenityImgArr = bgPage.idenityImgArr;
 
 有一款我特别喜欢的 Chrome 扩展—— Toby ，就是利用 *options* 配置页进行交互的。这是一款书签管理扩展，在舒服的界面来管理书签，这一点征服了我。强烈推荐！
 
-![](https://img69.imagetwist.com/i/37366/shfg8wy12bmk.png/tobymini.png)
+![](./image/5-2-tobymini.png)
 
 因为我本人还没有写过 *options* 页面，大致流程应该与 *popup* 页面的构建方式一致。有兴趣的同学可以尝试一波~
 
