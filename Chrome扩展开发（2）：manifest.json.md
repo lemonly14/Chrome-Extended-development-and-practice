@@ -7,13 +7,13 @@
 
 Chrome 扩展的 Manifest 必须包含`name、version`和`manifest_version`属性，目前来看`manifest_version`属性值只能为数字 **2**。
 
-其他常用的可选属性还有 *browser_action* 、*background* 、*content_page*、  *permissions* 等等，详细的可选属性可以参考[官方文档](https://developer.chrome.com/extensions/manifest)，这里的官方文档需要科学上网才能访问到。后续会有一个福利章节其中会介绍我本人正在使用非常好用的 Chrome 扩展，其中包括了利用 Chrome 扩展科学上网~~
+其他常用的可选属性还有 *browser_action* 、*background* 、*content_page*、  *permissions* 等等，详细的可选属性可以参考[官方文档](https://developer.chrome.com/extensions/manifest)，这里的官方文档需要科学上网才能访问到。后续会有一个福利章节其中会介绍我本人正在使用非常好用的 Chrome 扩展，其中包括了利用 Chrome 扩展科学上网 ~~
 
 ---------------------------
 
-## 人寿 OCR 识别扩展的 manifest.json 配置
+## 云助理核赔扩展的 manifest.json 配置
 
-这边贴上人寿 OCR 识别扩展的配置，我也将进行一一介绍。
+这边贴上云助理核赔扩展的配置，我也将进行一一介绍。
 
 
 * **manifest.json**

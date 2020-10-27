@@ -40,7 +40,7 @@
 
 * 共享页面 DOM
 
-Chrome 扩展中的各个部分都有同对方通信的方式，为什么偏偏 *content-scripts* 是联络员呢？因为 *content-scripts* 具备了其他扩展成员不具备的能力——和页面“进行通讯”。通过 *content-scripts* ， Chrome 扩展可以获取和操作页面上的 DOM 。人寿 OCR 识别扩展获取医疗信息和回填医疗信息就是使用了这个能力。
+Chrome 扩展中的各个部分都有同对方通信的方式，为什么偏偏 *content-scripts* 是联络员呢？因为 *content-scripts* 具备了其他扩展成员不具备的能力——和页面“进行通讯”。通过 *content-scripts* ， Chrome 扩展可以获取和操作页面上的 DOM 。云助理核赔扩展获取医疗信息和回填医疗信息就是使用了这个能力。
 
 获取页面信息：
 
@@ -88,7 +88,7 @@ function fillBeginTime(startTime) {
   3. **chrome.runtime(connect , getManifest , getURL , id , onConnect , onMessage , sendMessage)**
   4. **chrome.storage**
 
-看到这里并不需要担心，因为 *content-scripts* 可以利用通信机制来联系大爹 *background* 帮助完成，并返回需要的信息。
+看到这里并不需要担心，因为 *content-scripts* 可以利用通信机制来联系大哥 *background* 帮助完成，并返回需要的信息。
 
 ----------------------------
 ## inject-script

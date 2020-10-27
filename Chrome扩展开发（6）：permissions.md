@@ -48,7 +48,7 @@ document.querySelector('#my-button').addEventListener('click', function(event) {
     });
 });
 ```
->人寿 OCR 识别插件毕竟只是一个功能简单的 Chrome 扩展，只使用了部分权限。更多权限可以去[官方网站][2]深入了解，发挥想象力写出超棒的 Chrome 扩展。
+>云助理核赔扩展毕竟只是一个功能简单的 Chrome 扩展，只使用了部分权限。更多权限可以去[官方网站][2]深入了解，发挥想象力写出超棒的 Chrome 扩展。
 
 [1]:https://developer.chrome.com/extensions/permissions
 [2]:https://developer.chrome.com/extensions/api_index
