@@ -1,9 +1,9 @@
-# demo 扩展开发演示
+# 9. demo 扩展开发演示
 >作者：雷宇（leiyu@star-net.cn）
 
 ## demo 扩展概述
 
-这个演示 demo 扩展是借助百度通用物体和场景识别 api 识别上传的图片并返回识别字段，用户点击识别字段自动跳转到该字段的百度界面,并且可以捕获页面上所有的图片。
+这个演示 demo 扩展是借助百度通用物体和场景识别 api 识别上传的图片并返回识别到的文字字段，用户点击识别字段自动跳转到该字段的百度界面，并且可以捕获页面上所有的图片。
 
 可以看到这个demo主要有以下的能力：
 
@@ -13,19 +13,21 @@
 
 这些能力也是云助理核赔扩展的能够实现项目主要需求的依托点。
 
+源码位于：https://git.starnetiot.net/starnetiot-wiki-demo/chrome-extension-demo
+
 ## 开发阶段
 
 ### 调用百度识别 api
 
 #### 注册百度识别应用
 
-我们可以个人的名字注册一个百度识别应用(这里就省去一万个字...),注册完成后会显示该应用的API Key 和 Secret Key。
+我们可以个人的名字注册一个百度识别应用(这里就省去一万个字...)，注册完成后会显示该应用的API Key 和 Secret Key。
 
-![](./image/9-1-注册百度识别应用.png)
+![](./image/9-1-registerBaiduApp.png)
 
 #### 获取 access_token
 
-获得 API Key 和 Secret Key 后执行下面的方法( node 版)获取 access_token 。
+获得 API Key 和 Secret Key 后执行下面的方法(node 版)获取 access_token 。
 
 ``` js
 var https = require('https');
@@ -64,13 +66,13 @@ https.get(
     "session_secret": "34e3d68217504e266ced2bbd3a5d68dc"
 }
 ```
-我们取出我们请求需要带上的 **access_token**
+我们取出后续请求需要带上的 **access_token**
 #### 封装接口
 
 ```js
 import request from "@/utils/request";
 
-const access_token = '24.14xxxxxxxxxxxxxxxxxxxxxxxxxx'  //假的access_token 但是当你获取到24开头的access_token是没有问题的。
+const access_token = '24.14xxxxxxxxxxxxxxxxxxxxxxxxxx'  // 假的access_token 但是当你获取到24开头的access_token是没有问题的。
 
 export function getInfo(data) {
   return request({
@@ -93,8 +95,8 @@ demo 扩展主要利用开启的 tabs 权限来帮助我们打开新的 tab 页�
 ```JS
 //
 "permissions": [
-   "tabs",  //标签
-   "http://*/*",   //可以通过executeScript或insertCSS访问网站
+   "tabs",         // 标签
+   "http://*/*",   // 可以通过executeScript或insertCSS访问网站
    "https://*/*",
    "<all_urls>",
 ],
@@ -104,13 +106,13 @@ demo 扩展主要利用开启的 tabs 权限来帮助我们打开新的 tab 页�
 #### 点击调用 tabs API
 
 ``` JS
-//html
+// html
 <div class="keyword"
      v-for="(item,index) in keywordLsit"
     :key="index + 'item1'"
      @click="searchKey(item)">关键词：{{item}}</div>
-//js
 
+// js
 searchKey(val) {
     let params = {}
     params.url = `https://www.baidu.com/s?ie=utf-8&wd=${encodeURIComponent(val)}&tn=78040160_14_pg&ch=8`
@@ -133,7 +135,7 @@ imgList.push(item.currentSrc)
 ```
 
 
-![](./image/9-2demo扩展获取图片流.gif)
+![](./image/9-2-capturePics.gif)
 
 以上就是这个demo扩展主要的三种能力。
 
@@ -145,7 +147,7 @@ imgList.push(item.currentSrc)
 
 执行完成npm run dev命令行会生成dist文件夹，只需将该文件拖入扩展管理页即可。
 
-![](./image/demo拖放dist文件.gif)
+![](./image/9-3-dragDist.gif)
 
 ### background调试
 
@@ -164,7 +166,7 @@ window.getDataSuccess = function () {
 ```
 我们验证一下，打开background的开发者调试工具看看。
 
-![](./image/9-6-background调试工具.png)
+![](./image/9-4-backgroundDebuggingTool.png)
 
 ### content-script调试
 
@@ -204,9 +206,8 @@ mounted() {
 
 ```
 
-![](./image/9-4-查看content.js加入的DOM.png)
+![](./image/9-5-checkContent.png)
 
-![](./image/9-5-查看content.js加入的js变量.png)
 
 这里我们看到 *content-script* 创建的 id 为 **z-upload** 的 DOM 元素以及名为 **imgList** 的 JS 变量。
 
@@ -214,26 +215,26 @@ mounted() {
 
 打开 Chrome 扩展的 popup 页面，直接右键 popup 页面单击“检查”选项。
 
-![](./image/9-3-popup调试.png)
+![](./image/9-6-popupDebugging.png)
 
-会出现我们平时看到的开发者调试工具,但是这个是专属于 popup 页面的。在里面可以查看 popup 页面的 DOM ，以及该页面的请求等等。这里可以看到在 popup 页面发起的请求返回。
+会出现我们平时看到的开发者调试工具，但是这个是专属于 popup 页面的。在里面可以查看 popup 页面的 DOM ，以及该页面的请求等等。这里可以看到在 popup 页面发起的请求返回。
 
-![](./image/9-4-popup开发者调试工具.png)
+![](./image/9-7-popupDebuggingTool.png)
 
 ## 扩展安装
 
-在这个 Chrome 扩展开发脚手架打包扩展也是很简单，我这里直接设置成 npm run build 来打包拓展。在根目录下的 artifacts 文件夹下生成 Chrome 扩展的 zip 压缩包。
+在这个 Chrome 扩展开发脚手架里打包扩展也是很简单的，我这里直接设置成 npm run build 来打包拓展。在根目录下的 artifacts 文件夹下生成 Chrome 扩展的 zip 压缩包。
 
 首先按照下图进入谷歌浏览器的扩展管理页面。
 
-![](./image/9-7-进入谷歌扩展管理页面.png)
+![](./image/9-8-enterExtensionManagement.png)
 
 接下我们将看到如下图的页面，我们如果看到右上角的开发者模式是关闭的。我们需要先将其开启，否则无法安装 demo 扩展。
 
 开启开发者模式之后，我们可以直接将 demo 扩展拖入扩展管理页面并施放鼠标右键安装。操作如图所示。
 
-![](./image/9-8-释放安装.png)
+![](./image/9-9-installExtension.png)
 
 然后可以看到这样的效果~ 右上角可以看到我们刚刚安装的 demo 扩展了。
 
-![](./image/9-9-安装完成效果.png)
+![](./image/9-10-completeInstallation.png)

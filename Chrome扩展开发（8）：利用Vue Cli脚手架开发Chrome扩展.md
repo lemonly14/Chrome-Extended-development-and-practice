@@ -1,10 +1,10 @@
-# 利用Vue Cli脚手架开发Chrome扩展
+# 8. 利用Vue Cli脚手架开发Chrome扩展
 
 >作者：雷宇（leiyu@star-net.cn）
 
 ## 前言
 
-只要一个文件夹包括了前面几个章节提到的要素就可以组成一个 Chrome 扩展，我们开发过程肯定不可能直接编写，这时候我们肯定需要借助 Vue Cli 脚手架的帮助。本人水平实在有限，无法独立完成项目工程化。所以借鉴了之前顺豪的架子,同时根据网上的资料针对项目做了一些改进。
+只要一个文件夹包括了前面章节提到的几个要素就可以组成一个 Chrome 扩展，我们开发过程中肯定不可能直接编写，这时候我们肯定需要借助 Vue Cli 脚手架的帮助。本人水平实在有限，无法独立完成项目工程化。所以借鉴了之前顺豪的架子，同时根据网上的资料针对项目做了一些改进。
 
 此项目基于 Vue-Cli4 搭建，使用 <font color=red>vue-cli-plugin-browser-extension</font> 插件构建开发 Chrome 扩展的环境，如扩展热更新、打包后自动压缩成 zip 或者 crx 格式，更多详情点[这里](https://github.com/adambullmer/vue-cli-plugin-browser-extension)
 
@@ -18,16 +18,16 @@
  ┃ ┗ 📜index.js
  ┣ 📂components
  ┃ ┗ 📜HelloWorld.vue
- ┣ 📂content              // 内容页，向页面注入脚本
+ ┣ 📂content               // 内容页，向页面注入脚本
  ┃ ┣ 📂components
  ┃ ┃ ┗ 📜SideBar.vue
  ┃ ┗ 📜index.js
- ┣ 📂options              // 插件的设置页面，右键扩展图标有一个"选项" 菜单
+ ┣ 📂options               // 插件的设置页面，右键扩展图标有一个"选项" 菜单
  ┃ ┣ 📜App.vue
- ┃ ┗ 📜main.js            //options打包入口文件
- ┣ 📂popup                // 点击 chrome 图标时打开的一个小窗口网页，焦点离开就立即关闭，一般用来做一些临时性的交互，可以无限制跨域
+ ┃ ┗ 📜main.js             // options 打包入口文件
+ ┣ 📂popup                 // 点击 chrome 图标时打开的一个小窗口网页，焦点离开就立即关闭，一般用来做一些临时性的交互，可以无限制跨域
  ┃ ┣ 📜App.vue
- ┃ ┗ 📜main.js             //popup打包入口文件
+ ┃ ┗ 📜main.js             // popup打包入口文件
  ┣ 📂utils
  ┃ ┣ 📜crx.js              // 生成crx格式的压缩包
  ┃ ┗ 📜request.js          // 对 axios 进行二次封装
@@ -58,7 +58,7 @@ module.exports = {
   ]
 }
 ```
-比如要在 *popup* 页面使用 <font color=red>element UI</font> ，就在 *popup* 页面的打包入口文件引入 <font color=red>element UI</font> 的依赖,同理可以在 *options* 配置中和 *content-script* 中使用。
+比如要在 *popup* 页面使用 <font color=red>element UI</font> ，就在 *popup* 页面的打包入口文件引入 <font color=red>element UI</font> 的依赖，同理可以在 *options* 配置中和 *content-script* 中使用。
 
 ``` JS
 //popup的打包入口文件
@@ -105,7 +105,7 @@ pluginOptions: {
 
 如果 Chrome 扩展需要发布到谷歌扩展商店，必须要以 crx 格式的压缩包（ crx 文件本质就是 ZIP 文件，只是谷歌在 ZIP 文件头，插入了自定义的私有字段，如，插件描述，插件 ID ，密钥等）。[详情看这里][3]。关于发布部分，本人没有整理，相信有心人可以完成。(主要我太穷了~ 我没有钱)
 
-![](./image/8-1-扩展付费图.png)
+![](./image/8-1-extendedPayment.png)
 
 所以必要情况下加入了特定的脚本帮助我们打包出 crx 文件格式的压缩包。
 
@@ -114,7 +114,7 @@ npm install crx
 ```
 
 ```js
-//crx.js
+// crx.js
 const fs = require("fs");
 const path = require("path");
 const manifest = require(path.resolve(__dirname, "../manifest.json"));
