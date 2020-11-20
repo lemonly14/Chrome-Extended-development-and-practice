@@ -1,4 +1,4 @@
-# 5. Chrome 扩展中的形象代言人：popup
+# Chrome 扩展开发（5）：Chrome 扩展中的形象代言人 —— popup
 
 >作者：雷宇（leiyu@star-net.cn）
 
@@ -29,7 +29,6 @@
 - default_title：鼠标悬浮在 Chrome 扩展图标上显示信息
 - default_icon：显示的图标图片
 
----------------------------
 ## popup的功能
 
 * 定义页面
@@ -98,7 +97,6 @@ const bgPage = chrome.extension.getBackgroundPage();
 this.idenityClass = bgPage.idenityClass;
 this.idenityImgArr = bgPage.idenityImgArr;
 ```
------------------------------
 
 ## options 配置页
 

@@ -1,4 +1,4 @@
-# 3. Chrome 扩展中的支柱：background
+# Chrome 扩展开发（3）： Chrome 扩展中的支柱 —— background
 
 >作者：雷宇（leiyu@star-net.cn）
 
@@ -22,7 +22,6 @@
 
 一般情况下 *background* 这个页面我们不需要看到，基本不需要构建特殊的HTML，所以我们只需要用 *scripts* 属性即可。在云助理核赔扩展中也是只使用   *scripts* 属性。
 
-------------------------------------------------------------
 ### Event Page
 
 这里顺便提一下 **Event Page** ，毕竟上节中立了 flag ~
@@ -41,7 +40,6 @@
 
 在云助理核赔扩展中，我需要频繁地利用到 *background* 的能力，所以我并没有使用 *Event Page* 。既然说到我频繁利用 *background* 的能力，我一定要好好吹 *background* 一下。 *background* 作为扩展程序中的唯一大爹实在太强了，脏活累活一把抓。
 
-----------------------------
 ## background 的能力
 
 * 储存数据
@@ -130,7 +128,6 @@ const idenityInfo = await bgPage.checkIdenityInfo(
 // 监听网络请求
 chrome.webRequest.onBeforeRequest.addListener(
   function (details) {
-    console.log('看看有哪些请求', details)
     if (details.url.endsWith('/claimReg/get')) {
       chrome.tabs.query({
         active: true,

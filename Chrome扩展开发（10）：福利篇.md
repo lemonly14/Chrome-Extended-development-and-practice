@@ -1,4 +1,4 @@
-# 10. 福利篇
+# Chrome 扩展开发（10）： 福利篇
 
 >作者：雷宇（leiyu@star-net.cn）
 

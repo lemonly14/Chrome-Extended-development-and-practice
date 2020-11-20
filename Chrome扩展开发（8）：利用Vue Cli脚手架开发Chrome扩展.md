@@ -1,4 +1,4 @@
-# 8. 利用Vue Cli脚手架开发Chrome扩展
+# Chrome 扩展开发（8）：利用 Vue Cli 脚手架开发 Chrome 扩展
 
 >作者：雷宇（leiyu@star-net.cn）
 
@@ -10,7 +10,6 @@
 
 后续有兴趣开发 Chrome 扩展的同学可以直接使用这个[模板][1]，或者在 Github 上自行搜索 Chrome 扩展开发模板。
 
--------------------------
 ## 项目结构
 ```
 📦src
@@ -34,7 +33,6 @@
  ┣ 📜background.js         // 随着浏览器一直存在，权限非常高，几乎可以调用所有的扩展 API，可以无限制跨域
  ┗ 📜manifest.json         // 所有和 Chrome 扩展相关的配置
 ```
-----------------------
 ## 引入 element UI
 
 我们在构建 *popup* 页面、*options* 配置页以及使用 *content-script* 修改网页 DOM 的时候，就可以引入 <font color=red>element UI</font> 帮助我们快速的搭建页面。
@@ -74,7 +72,6 @@ new Vue({
   render: h => h(App)
 })
 ```
------------------------
 ## 引入 vue-cli-plugin-browser-extension
 
 ```JS
@@ -100,7 +97,6 @@ pluginOptions: {
   }
 }
 ```
---------------------------
 ## 引入 crx
 
 如果 Chrome 扩展需要发布到谷歌扩展商店，必须要以 crx 格式的压缩包（ crx 文件本质就是 ZIP 文件，只是谷歌在 ZIP 文件头，插入了自定义的私有字段，如，插件描述，插件 ID ，密钥等）。[详情看这里][3]。关于发布部分，本人没有整理，相信有心人可以完成。(主要我太穷了~ 我没有钱)

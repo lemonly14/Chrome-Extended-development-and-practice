@@ -1,4 +1,4 @@
-# 4. Chrome扩展中的联络员：content-script
+# Chrome 扩展开发（4）： Chrome扩展中的联络员 —— content-script
 
 >作者：雷宇（leiyu@star-net.cn）
 
@@ -33,14 +33,12 @@
 * **css**：需要注入的css文件，这里需要注意css的注入可能会影响局部的样式
 * **run_at**：代码注入的时间，可选值： "document_start"、"document_end"、"document_idle"，最后一个表示页面空闲时，默认为 document_idle。
 
------------------------------
-
 ## content-scripts 的能力
 
 
 * 共享页面 DOM
 
-Chrome 扩展中的各个部分都有同对方通信的方式，为什么偏偏 *content-scripts* 是联络员呢？因为 *content-scripts* 具备了其他扩展成员不具备的能力——和页面“进行通讯”。通过 *content-scripts* ， Chrome 扩展可以获取和操作页面上的 DOM 。云助理核赔扩展获取医疗信息和回填医疗信息就是使用了这个能力。
+Chrome 扩展中的各个部分都有同对方通信的方式，为什么偏偏 *content-scripts* 是联络员呢？因为 *content-scripts* 具备了其他扩展成员不具备的能力——和页面“进行通讯”。通过 *content-scripts* ， Chrome 扩展可以获取和操作页面上的 DOM 。云助理核赔扩展获取保单信息和回填保单信息就是使用了这个能力。
 
 获取页面信息：
 
@@ -90,7 +88,6 @@ function fillBeginTime(startTime) {
 
 看到这里并不需要担心，因为 *content-scripts* 可以利用通信机制来联系大哥 *background* 帮助，并返回需要的信息。
 
-----------------------------
 ## inject-script
 
 *content-scripts* 虽然很出色地完成了联络员的使命：可以联系页面的 DOM 元素，但是有个较大的缺陷，就是 *content-scripts* 没有办法和页面的 JavaScript 部分打交道。这样就意味着，无法操作页面的 DOM 元素来访问 *content-scripts* 。但是，“通过操作页面上的元素比如点击页面按钮来调用扩展 api ”是一个很常见的需求。如果这样的话，Chrome 扩展的限制性就有点大，无法很好地支持前端工程师和产品经理天马行空的想法了！
@@ -123,4 +120,3 @@ function injectCustomJs(jsPath) {
 >     "web_accessible_resources": ["js/inject.js"],
 > }
 > ```
-

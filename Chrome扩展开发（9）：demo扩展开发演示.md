@@ -1,4 +1,4 @@
-# 9. demo 扩展开发演示
+# Chrome 扩展开发（9）： demo 扩展开发演示
 >作者：雷宇（leiyu@star-net.cn）
 
 ## demo 扩展概述
